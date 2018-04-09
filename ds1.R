@@ -61,20 +61,125 @@ summary(students)
 
 #Matrix----
 
+(mymatrix = matrix(1:24, ncol=6))
+(mymatrix = matrix(1:24, ncol=6, byrow=T))
+
+(mymatrix = matrix(11:34, ncol=6, byrow=T))
+
+length(11:34) #to check the no. of numbers in that range
+
+?matrix #to know about the matrix datatype
+
+mymatrix
+
+mymatrix[2:4, 3:4]
+mymatrix[1,]
+mymatrix[,2]
+mymatrix[4,5]
+
+1:6
+paste('R',1:6)
+paste('R',1:6, sep='')
+paste('C',1:4, sep='')
+
+rn = paste('R',1:4, sep='-')
+cn = paste('C',1:6, sep='-')
+dimnames(mymatrix) = list(c(rn),c(cn))
+mymatrix
+
+dimnames(mymatrix) = list(c(paste('R',1:6, sep='')), c(paste('C',1:4, sep='')))
+mymatrix
+
+colSums(mymatrix)
+rowSums(mymatrix)
+colMeans(mymatrix)
+rowMeans(mymatrix)
 
 
-
+?dimnames
+                          
 
 #Arrays----
 
+(myarray = array(101:124, dim=c(4,3,2)))
+(myarray = array(211:234, dim=c(4,3,2)))
 
+myarray = array(1:24, dim=c(4,3,2), dimnames = list(c('s1','s2','s3','s4'), c('Sub1','Sub2','Sub3'), c('Dept1','Dept2')))
+myarray
+
+apply(myarray,1,sum)
+apply(myarray,2,sum)
+apply(myarray,3,sum)
+
+apply(myarray,2,mean)
+apply(myarray, c(2,3), mean)
+apply(myarray, c(1,3), mean)
+apply(myarray, c(1,2), mean)
+
+apply(myarray, c(1,2), max)
+#apply(name of array, dimensions(numerical), function)
 
 
 #List----
 
-
+listL1 = list('dangi', v1, students, mymatrix, myarray)
+listL1
+#combination of any no. of different datatypes
 
 
 #Factors----
 
+name = c('s1','s2','s3','s4','s5')
+course = c('PHD','MTECH','BTECH','BTECH','PHD')
+gender = c('M','F','M','F','M')
+grades = c('A','B','C','A','F')
+marks = floor(runif(5,50,100))
 
+df = data.frame(name,course,gender,grades,marks)
+df
+str(df)
+
+df[1,]
+df[,1]
+df$name
+df$course
+
+df$name = as.character(df$name)
+str(df)
+
+df$grades = factor(df$grades, ordered=T, levels=c('F','E','D','C','B','A'))
+df$grades
+
+df$gender = factor(df$gender, ordered = T)
+df$gender = factor(df$gender, ordered = T, levels=c('M','F'))
+df$gender
+
+#xx----
+
+(L1 = letters[1:26])
+(L2 = LETTERS[1:26])
+(M1 = month.abb[1:12])
+(M2 = month.name[1:12])
+
+sample(L1,2)
+sample(L1,30) #error since only 26 letters are there
+sample(L1, 30, replace=T) #can take a letter more than one times now, so no prob
+
+# ctrl+L to clear the lower area
+
+sample(M1)
+sample(M1,5)
+
+set.seed(10)
+sample(M1,5) #nos. generated now set to the seed(10)
+sample(M1,5)
+set.seed(10)
+sample(M1,5) #now same sample again as was set in seed(10)
+
+sample(M1,5)
+set.seed(10)
+sample(M1,5) #???Doubt here
+
+(grades = LETTERS[1:5])
+(sgrades = sample(grades, 20, replace=T, prob=c(0.4,0.2,0.2,0.1,0.1)))
+table(sgrades)
